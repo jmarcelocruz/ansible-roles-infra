@@ -1,0 +1,9 @@
+- name: Install libvirt
+  ansible.builtin.apt:
+    package:
+      - libvirt-clients
+      - libvirt-daemon-system
+      - qemu-system
+      - virtinst
+      - ovmf
+    install_recommends: false
