@@ -1,0 +1,21 @@
+- name: Install nftables
+  ansible.builtin.apt:
+    package: nftables
+- name: Create /etc/nftables.conf.d directory
+  ansible.builtin.file:
+    path: /etc/nftables.conf.d
+    state: directory
+    mode: "0755"
+- name: Write nftables configuration
+  notify:
+    - Reload nftables
+  ansible.builtin.copy:
+    src: etc/nftables.conf
+    dest: /etc
+    owner: root
+    mode: "0644"
+- name: Enable nftables
+  ansible.builtin.service:
+    name: nftables
+    state: started
+    enabled: true
