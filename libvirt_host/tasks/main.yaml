@@ -4,6 +4,7 @@
       - libvirt-clients
       - libvirt-daemon-system
       - qemu-system
+      - qemu-utils
       - virtinst
       - ovmf
     install_recommends: false
