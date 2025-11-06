@@ -50,7 +50,7 @@
   when: "'i386' not in dpkg_archs.stdout_lines"
 - name: Update apt cache
   ansible.builtin.apt:
-    update_cache: yes
+    update_cache: true
 - name: Install packages
   ansible.builtin.apt:
     name:
