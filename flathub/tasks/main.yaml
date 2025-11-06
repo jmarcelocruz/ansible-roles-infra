@@ -1,0 +1,9 @@
+- name: Install Flatpak support
+  ansible.builtin.apt:
+    package:
+      - flatpak
+      - gnome-software-plugin-flatpak
+- name: Add Flathub repository
+  community.general.flatpak_remote:
+    name: flathub
+    flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
