@@ -1,3 +1,6 @@
+- name: Install bridge-utils
+  ansible.builtin.apt:
+    name: bridge-utils
 - name: Create /etc/network/interfaces.d directory
   ansible.builtin.file:
     path: /etc/network/interfaces.d
