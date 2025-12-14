@@ -1,18 +1,21 @@
 - name: Install dnsmasq
   ansible.builtin.apt:
     package: dnsmasq
-- name: Create /etc/dnsmasq.conf.d directory
+- name: Create /etc/dnsmasq.d directory
   ansible.builtin.file:
-    path: /etc/dnsmasq.conf.d
+    path: /etc/dnsmasq.d
     state: directory
+    owner: root
+    group: root
     mode: "0755"
 - name: Write dnsmasq configuration
   notify:
     - Reload dnsmasq
-  ansible.builtin.copy:
-    src: etc/dnsmasq.conf
+  ansible.builtin.template:
+    src: etc/dnsmasq.conf.j2
     dest: /etc/dnsmasq.conf
     owner: root
+    group: root
     mode: "0644"
 - name: Enable dnsmasq
   ansible.builtin.service:

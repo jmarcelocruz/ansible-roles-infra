@@ -1,0 +1,4 @@
+{% for default_configuration in infra_dnsmasq_default_configuration %}
+{{ default_configuration }}
+{% endfor %}
+conf-dir=/etc/dnsmasq.d,*.conf
