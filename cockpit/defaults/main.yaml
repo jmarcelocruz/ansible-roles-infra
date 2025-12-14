@@ -1,0 +1,7 @@
+infra_cockpit_disallowed_users: []
+infra_cockpit_default_addons:
+  - cockpit-networkmanager
+  - cockpit-pcp
+  - cockpit-storaged
+  - pcp
+infra_cockpit_extra_addons: []

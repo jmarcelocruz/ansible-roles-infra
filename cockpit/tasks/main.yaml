@@ -2,15 +2,15 @@
   ansible.builtin.apt:
     package:
       - cockpit
-      - cockpit-networkmanager
-      - cockpit-pcp
-      - cockpit-storaged
-      - pcp
+- name: Install Cockpit Add-ons
+  ansible.builtin.apt:
+    package: "{{ infra_cockpit_default_addons + infra_cockpit_extra_addons }}"
 - name: Write Cockpit disallowed-users configuration
-  ansible.builtin.copy:
-    src: etc/cockpit/disallowed-users
-    dest: /etc/cockpit
+  ansible.builtin.template:
+    src: etc/cockpit/disallowed-users.j2
+    dest: /etc/cockpit/disallowed-users
     owner: root
+    group: root
     mode: "0644"
   notify:
     - Reload Cockpit
