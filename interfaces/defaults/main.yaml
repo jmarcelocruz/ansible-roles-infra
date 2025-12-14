@@ -1,0 +1,5 @@
+infra_interfaces_default_interfaces:
+  - |
+    auto lo
+    iface lo inet loopback
+infra_interfaces_extra_interfaces: []

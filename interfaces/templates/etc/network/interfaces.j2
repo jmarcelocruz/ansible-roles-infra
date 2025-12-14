@@ -1,0 +1,8 @@
+source /etc/network/interfaces.d/*
+
+{% for interface in infra_interfaces_default_interfaces %}
+{{ interface }}
+{% endfor %}
+{% for interface in infra_interfaces_extra_interfaces %}
+{{ interface }}
+{% endfor %}

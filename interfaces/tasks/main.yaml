@@ -6,8 +6,8 @@
 - name: Write network interfaces configuration
   notify:
     - Reload interfaces
-  ansible.builtin.copy:
-    src: etc/network/interfaces
+  ansible.builtin.template:
+    src: etc/network/interfaces.j2
     dest: /etc/network/interfaces
     owner: root
     mode: "0644"
