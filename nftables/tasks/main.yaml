@@ -5,6 +5,8 @@
   ansible.builtin.file:
     path: /etc/nftables.conf.d
     state: directory
+    owner: root
+    group: root
     mode: "0755"
 - name: Write nftables configuration
   notify:
@@ -13,6 +15,7 @@
     src: etc/nftables.conf
     dest: /etc
     owner: root
+    group: root
     mode: "0644"
 - name: Enable nftables
   ansible.builtin.service:
