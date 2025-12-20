@@ -1,0 +1,47 @@
+#!/usr/sbin/nft -f
+
+flush ruleset
+
+table inet filter {
+    chain input {
+        type filter hook input priority filter; policy {{ infra_nftables_filter_input_policy }}
+
+{% for input_rule in infra_nftables_filter_input_rules %}
+        {{ input_rule }}
+{% endfor %}
+    }
+
+    chain forward {
+        type filter hook forward priority filter; policy {{ infra_nftables_filter_forward_policy }}
+
+{% for forward_rule in infra_nftables_filter_forward_rules %}
+        {{ forward_rule }}
+{% endfor %}
+    }
+
+    chain output {
+        type filter hook output priority filter; policy {{ infra_nftables_filter_output_policy }}
+
+{% for output_rule in infra_nftables_filter_output_rules %}
+        {{ output_rule }}
+{% endfor %}
+    }
+}
+
+table inet nat {
+    chain prerouting {
+        type nat hook prerouting priority dstnat
+
+{% for dnat_rule in infra_nftables_nat_dnat_rules %}
+        {{ dnat_rule }}
+{% endfor %}
+    }
+
+    chain postrouting {
+        type nat hook postrouting priority srcnat
+
+{% for snat_rule in infra_nftables_nat_snat_rules %}
+        {{ snat_rule }}
+{% endfor %}
+    }
+}

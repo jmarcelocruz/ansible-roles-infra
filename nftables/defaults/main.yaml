@@ -1,0 +1,8 @@
+infra_nftables_filter_input_policy: "accept"
+infra_nftables_filter_input_rules: []
+infra_nftables_filter_forward_policy: "accept"
+infra_nftables_filter_forward_rules: []
+infra_nftables_filter_output_policy: "accept"
+infra_nftables_filter_output_rules: []
+infra_nftables_nat_dnat_rules: []
+infra_nftables_nat_snat_rules: []
