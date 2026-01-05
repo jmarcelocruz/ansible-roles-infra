@@ -1,4 +1,6 @@
-infra_cockpit_disallowed_users: []
+infra_cockpit_default_disallowed_users:
+  - root
+infra_cockpit_extra_disallowed_users: []
 infra_cockpit_default_addons:
   - cockpit-networkmanager
   - cockpit-pcp

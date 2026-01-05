@@ -1,3 +1,6 @@
-{% for disallowed_user in infra_cockpit_disallowed_users %}
+{% for disallowed_user in infra_cockpit_default_disallowed_users %}
+{{ disallowed_user }}
+{% endfor %}
+{% for disallowed_user in infra_cockpit_extra_disallowed_users %}
 {{ disallowed_user }}
 {% endfor %}
