@@ -1,0 +1,17 @@
+- name: Install ethtool
+  ansible.builtin.apt:
+    package:
+      - ethtool
+- name: Write wol@.service
+  ansible.builtin.copy:
+    src: etc/systemd/system/wol@.service
+    dest: /etc/systemd/system/wol@.service
+    owner: root
+    group: root
+    mode: "0644"
+- name: Enable Wake-on-LAN
+  ansible.builtin.systemd:
+    unit: "wol@{{ item }}"
+    enabled: true
+    state: started
+  loop: "{{ infra_wake_on_lan_interfaces }}"
