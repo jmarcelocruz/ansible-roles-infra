@@ -2,9 +2,11 @@
   ansible.builtin.apt:
     package:
       - cockpit
+    default_release: "{{ ansible_facts.distribution_release }}-backports"
 - name: Install Cockpit Add-ons
   ansible.builtin.apt:
     package: "{{ infra_cockpit_default_addons + infra_cockpit_extra_addons }}"
+    default_release: "{{ ansible_facts.distribution_release }}-backports"
 - name: Write Cockpit disallowed-users configuration
   ansible.builtin.template:
     src: etc/cockpit/disallowed-users.j2
